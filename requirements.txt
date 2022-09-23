@@ -3,6 +3,6 @@ pillow==8.4.0
 matplotlib==3.5.2
 scipy==1.8.0
 numpy==1.22.3
-openslide==3.4.1
+openslide-python
 fastai==2.7.9
 histolab==0.5.1
