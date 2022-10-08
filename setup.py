@@ -8,7 +8,7 @@ setup(
     version='1.0',
     packages=find_packages(),
     entry_points={
-        "console_scripts": ['HNSC-classifier = main:run',]
+        "console_scripts": ['HNSC-classifier = HNSCDP.HNSC:main']
     },
     url='https://github.com/yangfangs/HNSC-classifier',
     license='GNU General Public License v3.0',

@@ -1,11 +1,8 @@
 import argparse
 import os
 import time
-
-import pandas as pd
-
-from HNSC_predict import extract_grid_slide, predict, label_func, predict_stage
-from plot import heatmap_svs, read_svs
+from HNSCDP.HNSC_predict import extract_grid_slide, predict, label_func, predict_stage
+from HNSCDP.plot import heatmap_svs, read_svs
 
 parser = argparse.ArgumentParser(description='HNSC-classifier')
 
@@ -27,18 +24,18 @@ parser.add_argument("-s", "--stage", dest='S_model', default="",
                     help="The deep model path of stage classification")
 
 parser.add_argument("-t", "--tumor", dest='T_model', default="",
-                    help="The deep model path of T classification (TNM Staging System )")
+                    help="The deep model path of T classification (TNM Staging System)")
 
 parser.add_argument("-n", "--nearby", dest='N_model', default="",
-                    help="The deep model path of N classification (TNM Staging System )")
+                    help="The deep model path of N classification (TNM Staging System)")
 
 parser.add_argument("-m", "--metastasized", dest='M_model', default="",
-                    help="The deep model path of M classification (TNM Staging System )")
+                    help="The deep model path of M classification (TNM Staging System)")
 
 args = parser.parse_args()
 
 
-def run():
+def main():
     current_directory = os.getcwd()
     final_directory = os.path.join(current_directory, args.output_name)
     os.makedirs(final_directory, exist_ok=True)
@@ -147,4 +144,4 @@ def run():
 
 
 if __name__ == '__main__':
-    run()
+    main()
