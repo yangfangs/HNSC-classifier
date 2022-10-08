@@ -4,7 +4,7 @@ an accuracy tools for head and neck cancer detection and stage inferred in digit
 
 # The HNSC-classifier scheme and Deep learning framework:
 
-![Workflow](https://github.com/yangfangs/HNSC-classifier/blob/master/scheme/scheme.png)
+![Workflow](https://github.com/yangfangs/HNSC-classifier/blob/main/scheme/scheme.png)
 
 
 ### options
