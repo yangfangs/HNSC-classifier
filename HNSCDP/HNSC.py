@@ -1,7 +1,7 @@
 import argparse
 import os
 import time
-from HNSCDP.HNSC_predict import extract_grid_slide, predict, label_func, predict_stage
+from HNSCDP.HNSC_predict import extract_grid_slide, predict, predict_stage
 from HNSCDP.plot import heatmap_svs, read_svs
 
 parser = argparse.ArgumentParser(description='HNSC-classifier')
@@ -53,7 +53,7 @@ def main():
     # process_path = "/Users/fangy/work/HNSC/test_PIL/output/Extract_tiles"
     # final_directory = "/Users/fangy/work/HNSC/test_PIL/output/"
 
-    label_func()
+    # label_func()
 
     t = time.time()
     res_predict = predict(svs_path=process_path,

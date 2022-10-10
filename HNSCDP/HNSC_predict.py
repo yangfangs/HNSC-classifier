@@ -44,14 +44,17 @@ def extract_grid_slide(svs_path, tile_size, LEVEL, BASE_RESULT_PATH):
     return process_path
 
 
-def label_func(f=''):
-    return f[:-4].split('_')[-1]
+# def label_func(f=''):
+#     return f[:-4].split('_')[-1]
 
 
 def predict(svs_path, model_path_cancer, tile_size, result_path):
 
     # model_path_cancer = "/Users/fangy/work/HNSC/test_PIL/learn.pkl"
-
+    # print("loading func")
+    base_path = os.path.dirname(__file__)
+    sys.path.append(base_path)
+    # label_func()
     learn = load_learner(model_path_cancer)
 
     path = Path(svs_path)
@@ -97,3 +100,4 @@ def predict_stage(model_path_stage, df, title_stage, title_prob):
     df_stage = pd.DataFrame(res_stage)
     df_combine = pd.merge(df, df_stage, on='tile', how='left')
     return df_combine
+

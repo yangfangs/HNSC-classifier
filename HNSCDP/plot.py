@@ -93,7 +93,7 @@ def get_text(col_names, df_row):
     if "stage_probability" in col_names:
         summary_list.append("S_prob.: " + str(df_row.stage_probability)[:4])
     if "TNM_system_T" in col_names:
-        summary_list.append("T: " + df_row.TNM_system_T)4
+        summary_list.append("T: " + df_row.TNM_system_T)
     if "T_probability" in col_names:
         summary_list.append("T_prob.: " + str(df_row.T_probability)[:4])
     if "TNM_system_M" in col_names:
@@ -159,8 +159,8 @@ def heatmap_svs(img_path, df_combine, out_path, method):
 
     text = "\n".join(summary_list)
 
-    font2 = ImageFont.truetype(font='Arial.ttf', size=20)
-    font_summary = ImageFont.truetype(font='Arial.ttf', size=20)
+    font2 = ImageFont.truetype(font='FreeSerif.ttf', size=20)
+    font_summary = ImageFont.truetype(font='FreeSerif.ttf', size=20)
 
     draw1.text(xy=(w + (W - w) // 2 - 80, h2 + 200),
                text="Summary: ", fill='black', font=font_summary, stroke_width=1,
@@ -196,7 +196,7 @@ def read_svs(img_path, df_combine, out_path):
     slide_thumbnail = slide.get_thumbnail((1000, 1000))
     draw = ImageDraw.Draw(slide_thumbnail)
     w, h = slide_thumbnail.size
-    font = ImageFont.truetype(font='PingFang.ttc', size=10)
+    font = ImageFont.truetype(font='FreeSerif.ttf', size=10)
     df_combine_top = df_combine[:8]
     for row_index, row in df_combine_top.iterrows():
         # print(row_index, row)
@@ -219,7 +219,7 @@ def read_svs(img_path, df_combine, out_path):
     start_point = [focus_point[0] - 0.5 * w_each, focus_point[1] - 0.5 * h_each]
     count = 0
     col_names = df_combine_top.columns.tolist()
-    font2 = ImageFont.truetype(font='Arial.ttf', size=30)
+    font2 = ImageFont.truetype(font='FreeSerif.ttf', size=30)
     for i in range(0, 2):
         for k in range(0, 4):
             df_row = df_combine_top.loc[count]
