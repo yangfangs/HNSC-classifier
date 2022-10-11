@@ -17,6 +17,14 @@ os.environ["OMP_NUM_THREADS"] = "1"
 
 
 def extract_grid_slide(svs_path, tile_size, LEVEL, BASE_RESULT_PATH):
+    """
+    extract tiles
+    :param svs_path: WSI path
+    :param tile_size: tiles size
+    :param LEVEL: extarct tiles form level
+    :param BASE_RESULT_PATH: outpath
+    :return: result dir
+    """
     # svs_path = "/Users/fangy/work/HNSC/data/00b2dd2a-95f9-4e87-aef1-473524725b4c/TCGA-BA-7269-01A-01-TS1.44d70d72-41bc-4a13-9b44-6cbabe7f9ef2.svs"
     # svs_path = "/Users/fangy/work/HNSC/data/4b8dc6ea-de14-4ff7-ad9b-10b77a7e3e33/TCGA-CV-7245-11A-01-TS1.30e6a59b-fdc9-4976-9040-e1a851232b1b.svs"
     # img_path = '/Users/fangy/work/HNSC/data/4c650817-442e-4200-84cd-942b1378aa1c/TCGA-BB-4223-01A-01-BS1.7d09ad3d-016e-461a-a053-f9434945073b.svs'
@@ -49,6 +57,14 @@ def extract_grid_slide(svs_path, tile_size, LEVEL, BASE_RESULT_PATH):
 
 
 def predict(svs_path, model_path_cancer, tile_size, result_path):
+    """
+    predict cancer/normal
+    :param svs_path: WSI path
+    :param model_path_cancer: deep learn model path
+    :param tile_size: tile size
+    :param result_path: path of result
+    :return: predicted result
+    """
 
     # model_path_cancer = "/Users/fangy/work/HNSC/test_PIL/learn.pkl"
     # print("loading func")
@@ -82,6 +98,14 @@ def predict(svs_path, model_path_cancer, tile_size, result_path):
 
 
 def predict_stage(model_path_stage, df, title_stage, title_prob):
+    """
+    predcit stage
+    :param model_path_stage: deep learn model path
+    :param df: cancer/normal predicted result
+    :param title_stage: stage titles
+    :param title_prob:  probability of tiles
+    :return: predicted result
+    """
     files_stage = df[df['classification'] == 'cancer']['tile']
     # model_path_stage = "/Users/fangy/work/HNSC/test_PIL/learn_S.pkl"
     learn_stage = load_learner(model_path_stage)

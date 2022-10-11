@@ -13,6 +13,7 @@ from fastai.vision.all import *
 from openslide.deepzoom import DeepZoomGenerator
 import io
 
+
 # from colour import Color
 # result_path = '/Users/fangy/work/HNSC/test_PIL'
 #
@@ -26,6 +27,7 @@ import io
 
 
 def plot_bar(n):
+    ''' plot heatmap bar'''
     c1 = 'green'  # blue
     c2 = 'red'  # green
     # n = 100
@@ -42,6 +44,11 @@ def plot_bar(n):
 
 
 def read_coordinate(path):
+    """
+    read coordinate from tiles
+    :param path:  path of tiles
+    :return: coordinate
+    """
     # path = "/Users/fangy/work/HNSC/test_PIL/Extract"
     # path = Path("/Users/fangy/work/HNSC/test_PIL/Extract2/")
     # files = get_image_files(path, recurse=True)
@@ -51,6 +58,13 @@ def read_coordinate(path):
 
 
 def colorFader(c1, c2, mix=0):  # fade (linear interpolate) from color c1 (at mix=0) to c2 (mix=1)
+    """
+    define the color range
+    :param c1: star
+    :param c2: stop
+    :param mix: 0
+    :return: color range
+    """
     c1 = np.array(mpl.colors.to_rgb(c1))
     c2 = np.array(mpl.colors.to_rgb(c2))
     return mpl.colors.to_hex((1 - mix) * c1 + mix * c2)
@@ -66,6 +80,13 @@ def fig2img(fig):
 
 
 def resize_pos(trans, src_size, tar_size):
+    """
+    resize position
+    :param trans: tarnsform coord
+    :param src_size: source size
+    :param tar_size: target size
+    :return: coord
+    """
     x1 = trans[0]
     y1 = trans[1]
     x11 = trans[2]
@@ -82,6 +103,12 @@ def resize_pos(trans, src_size, tar_size):
 
 
 def get_text(col_names, df_row):
+    """
+    get text form predicted result
+    :param col_names: col names
+    :param df_row: row of data frame
+    :return:
+    """
     summary_list = []
     summary_list.append("Id: " + str(df_row.name))
     if "classification" in col_names:
@@ -108,6 +135,14 @@ def get_text(col_names, df_row):
 
 
 def heatmap_svs(img_path, df_combine, out_path, method):
+    """
+    plot heatmap
+    :param img_path: read image path
+    :param df_combine: predict result
+    :param out_path: output path
+    :param method: method
+    :return: NA
+    """
     # img_path = '/Users/fangy/work/HNSC/data/4c650817-442e-4200-84cd-942b1378aa1c/TCGA-BB-4223-01A-01-BS1.7d09ad3d-016e-461a-a053-f9434945073b.svs'
     slide = openslide.open_slide(img_path)
     slide.dimensions
@@ -184,13 +219,15 @@ def heatmap_svs(img_path, df_combine, out_path, method):
 
 
 def read_svs(img_path, df_combine, out_path):
-    # 参数：模式、大小、颜色
-
+    """
+    read svs format image
+    :param img_path: image path
+    :param df_combine: predicted result
+    :param out_path: output path
+    :return: NA
+    """
     w_each = 224
     h_each = 224
-
-    # 添加文字
-
     # img_path = '/Users/fangy/work/HNSC/data/00b2dd2a-95f9-4e87-aef1-473524725b4c/TCGA-BA-7269-01A-01-TS1.44d70d72-41bc-4a13-9b44-6cbabe7f9ef2.svs'
     slide = openslide.open_slide(img_path)
     slide_thumbnail = slide.get_thumbnail((1000, 1000))

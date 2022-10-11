@@ -4,6 +4,7 @@ import time
 from HNSCDP.HNSC_predict import extract_grid_slide, predict, predict_stage
 from HNSCDP.plot import heatmap_svs, read_svs
 
+# arguments
 parser = argparse.ArgumentParser(description='HNSC-classifier')
 
 parser.add_argument("-i", "--image", dest='wsi_path', required=True, help="Path to a whole slide image")
@@ -36,6 +37,7 @@ args = parser.parse_args()
 
 
 def main():
+
     current_directory = os.getcwd()
     final_directory = os.path.join(current_directory, args.output_name)
     os.makedirs(final_directory, exist_ok=True)
@@ -56,6 +58,7 @@ def main():
     # label_func()
 
     t = time.time()
+    # predicted cancer/normal
     res_predict = predict(svs_path=process_path,
                           model_path_cancer=args.cancer_model,
                           tile_size=args.tile_size,
@@ -78,6 +81,7 @@ def main():
     print(f'elapsed time: {time.time() - t:.4f}s')
     if args.S_model != "":
         t = time.time()
+        # predict stage
         res_predict = predict_stage(model_path_stage=args.S_model, df=res_predict, title_stage="stage",
                                     title_prob="stage_probability")
         print("predict the tiles of stage finished")
@@ -92,6 +96,7 @@ def main():
         print(f'elapsed time: {time.time() - t:.4f}s')
     if args.T_model != "":
         t = time.time()
+        # predict TNM system (T)
         res_predict = predict_stage(model_path_stage=args.T_model, df=res_predict, title_stage="TNM_system_T",
                                     title_prob="T_probability")
 
@@ -107,6 +112,7 @@ def main():
         print(f'elapsed time: {time.time() - t:.4f}s')
     if args.M_model != "":
         t = time.time()
+        # predict TNM system (M)
         res_predict = predict_stage(model_path_stage=args.M_model, df=res_predict, title_stage="TNM_system_M",
                                     title_prob="M_probability")
         print("predict the tiles of cancer metastasized (M) finished")
@@ -120,6 +126,7 @@ def main():
         print(f'elapsed time: {time.time() - t:.4f}s')
     if args.N_model != "":
         t = time.time()
+        # predict TNM system (N)
         res_predict = predict_stage(model_path_stage=args.N_model, df=res_predict, title_stage="TNM_system_N",
                                     title_prob="N_probability")
         print("predict the tiles of nearby lymph nodes (N) finished")
