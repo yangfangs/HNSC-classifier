@@ -60,7 +60,7 @@ $ HNSC-calssifier - i TCGA-BB-4223-01A-01-BS1.7d09ad3d-016e-461a-a053-f943494507
 ## Download test data
 The test Whole slide image download form TCGA [TCGA-BB-4223-01A-01-BS1.7d09ad3d-016e-461a-a053-f9434945073b.svs](https://bit.ly/3CqLyJt).
 
-## Download Deep learning model
+## Download deep learning model
 | DP model        | tarin tiles                                                  | Description                                                   |
 |:----------------|:-------------------------------------------------------------|:--------------------------------------------------------------|
 | [learn.pkl](https://bit.ly/3RKzVTy)   | 1,392,135                                                    | The deep learn model for detected tumor/normal                |
@@ -69,6 +69,9 @@ The test Whole slide image download form TCGA [TCGA-BB-4223-01A-01-BS1.7d09ad3d-
 | [learn_N.pkl](https://bit.ly/3SPPbjq) | 1,428,765                                                    | The deep model for classified stage N (TNM Staging System)    |
 | [learn_T.pkl](https://bit.ly/3EAF25J) | 1,428,765                                                    | The deep model for classified stage T (TNM Staging System)    |
  
+> If you can not clink the hyperlink to obtain test data and DP model, you can download test data from `ftp://23.105.208.65`
+
+## Run HNSC-classifier in virtualenv
 1. install virtualenv
 
 ```angular2html
